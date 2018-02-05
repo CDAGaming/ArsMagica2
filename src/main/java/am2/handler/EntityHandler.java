@@ -90,7 +90,7 @@ public class EntityHandler {
 	public void onMouseEvent(MouseEvent event){
 		event.setCanceled(ArsMagica2.proxy.setMouseDWheel(event.getDwheel()));
 	}
-
+/*
 	@SuppressWarnings("deprecation")
 	@SubscribeEvent
 	public void attachEntity(AttachCapabilitiesEvent.Entity event) {
@@ -116,7 +116,7 @@ public class EntityHandler {
 			}
 		}
 	}
-	
+*/
 	@SubscribeEvent
 	public void onEntityConstructed(EntityConstructing event) {
 		if (event.getEntity() instanceof EntityLivingBase) {

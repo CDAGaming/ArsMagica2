@@ -1,5 +1,6 @@
 package am2.particles;
 
+import net.minecraft.client.renderer.BufferBuilder;
 import org.lwjgl.opengl.GL11;
 
 import am2.ArsMagica2;
@@ -10,7 +11,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
 import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -173,7 +173,7 @@ public class AMBeam extends Particle implements IBeamParticle{
 	}
 
 	@Override
-	public void renderParticle(VertexBuffer tessellator, Entity ent, float par2, float par3, float par4, float par5, float par6, float par7){
+	public void renderParticle(BufferBuilder tessellator, Entity ent, float par2, float par3, float par4, float par5, float par6, float par7){
 		GL11.glPushMatrix();
 		//GlStateManager.disableBlend();
 		//GlStateManager.disableAlpha();

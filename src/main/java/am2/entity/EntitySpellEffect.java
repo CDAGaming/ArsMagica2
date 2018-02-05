@@ -20,7 +20,7 @@ import am2.utils.SpellUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -51,7 +51,7 @@ public class EntitySpellEffect extends Entity{
 	private int casterEntityID;
 	private float moveSpeed;    //used by waves only
 
-	private static final DataParameter<ItemStack> WATCHER_STACK = EntityDataManager.createKey(EntitySpellEffect.class, DataSerializers.OPTIONAL_ITEM_STACK);
+	private static final DataParameter<ItemStack> WATCHER_STACK = EntityDataManager.createKey(EntitySpellEffect.class, DataSerializers.ITEM_STACK);
 	private static final DataParameter<Float> WATCHER_RADIUS = EntityDataManager.createKey(EntitySpellEffect.class, DataSerializers.FLOAT);
 	private static final DataParameter<Float> WATCHER_GRAVITY = EntityDataManager.createKey(EntitySpellEffect.class, DataSerializers.FLOAT);
 	private static final DataParameter<Integer> WATCHER_TYPE = EntityDataManager.createKey(EntitySpellEffect.class, DataSerializers.VARINT); //0 == zone, 1 == rain of fire, 2 == blizzard, 3 == wall, 4 == wave
@@ -229,8 +229,8 @@ public class EntitySpellEffect extends Entity{
 			float radius = this.dataManager.get(WATCHER_RADIUS);
 			List<Entity> possibleTargets = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(posX - radius, posY - 3, posZ - radius, posX + radius, posY + 3, posZ + radius));
 			for (Entity e : possibleTargets){
-				if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-					e = (EntityLivingBase)((EntityDragonPart)e).parent;
+				if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+					e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 
 				if (e instanceof EntityLivingBase)
 					//SpellUtils.applyStageToEntity(spellStack, dummycaster, world, e, false);
@@ -294,8 +294,8 @@ public class EntitySpellEffect extends Entity{
 			List<Entity> possibleTargets = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(posX - radius, posY - 1, posZ - radius, posX + radius, posY + 3, posZ + radius));
 			for (Entity e : possibleTargets){
 				if (e != dummycaster){
-					if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-						e = (EntityLivingBase)((EntityDragonPart)e).parent;
+					if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+						e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 
 					double lastVelX = e.motionX;
 					double lastVelY = e.motionY;
@@ -375,8 +375,8 @@ public class EntitySpellEffect extends Entity{
 			List<Entity> possibleTargets = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(posX - radius, posY - 1, posZ - radius, posX + radius, posY + 3, posZ + radius));
 			for (Entity e : possibleTargets){
 				if (e != dummycaster){
-					if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-						e = (EntityLivingBase)((EntityDragonPart)e).parent;
+					if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+						e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 
 					if (e instanceof EntityLivingBase)
 						((EntityLivingBase)e).addPotionEffect(new BuffEffectFrostSlowed(80, 3));
@@ -489,8 +489,8 @@ public class EntitySpellEffect extends Entity{
 				for (Entity e : possibleTargets){
 					if (e == this || e == dummycaster || e.getEntityId() == casterEntityID) continue;
 
-					if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-						e = (EntityLivingBase)((EntityDragonPart)e).parent;
+					if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+						e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 
 					Vec3d target = new Vec3d(e.posX, e.posY, e.posZ);
 

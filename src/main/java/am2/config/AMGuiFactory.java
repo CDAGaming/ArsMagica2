@@ -16,7 +16,7 @@ import net.minecraftforge.fml.client.config.IConfigElement;
 public class AMGuiFactory implements IModGuiFactory {
 
 	@Override
-	public void initialize(Minecraft minecraftInstance) {
+	public void initialize(final Minecraft minecraftInstance) {
 		
 	}
 
@@ -26,13 +26,8 @@ public class AMGuiFactory implements IModGuiFactory {
 	}
 
 	@Override
-	public GuiScreen createConfigGui(GuiScreen parentScreen) {
+	public GuiScreen createConfigGui(final GuiScreen parentScreen) {
 		return new AMGuiConfig(parentScreen);
-	}
-
-	@Override
-	public Class<? extends GuiScreen> mainConfigGuiClass() {
-		return AMGuiConfig.class;
 	}
 
 	@Override
@@ -40,11 +35,6 @@ public class AMGuiFactory implements IModGuiFactory {
 		return null;
 	}
 
-	@Override
-	public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
-		return null;
-	}
-	
 	public static class AMGuiConfig extends GuiConfig {
 
 		public AMGuiConfig(GuiScreen parentScreen) {

@@ -11,9 +11,9 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public abstract class ArmorImbuement extends IForgeRegistryEntry.Impl<ArmorImbuement>{
+public abstract class ArmorImbuement extends IForgeRegistryEntry.Impl<ArmorImbuement> implements IForgeRegistryEntry<ArmorImbuement> {
 	
 	public abstract String getID();
 	

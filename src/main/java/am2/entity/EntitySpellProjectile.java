@@ -14,7 +14,7 @@ import am2.utils.NBTUtils;
 import am2.utils.SpellUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -143,8 +143,8 @@ public class EntitySpellProjectile extends Entity {
 							effSize--;
 							continue;
 						}
-						if (entity instanceof EntityDragonPart && ((EntityDragonPart)entity).parent instanceof EntityLivingBase)
-							entity = (EntityLivingBase)((EntityDragonPart)entity).parent;
+						if (entity instanceof MultiPartEntityPart && ((MultiPartEntityPart)entity).parent instanceof EntityLivingBase)
+							entity = (EntityLivingBase)((MultiPartEntityPart)entity).parent;
 						SpellUtils.applyStageToEntity(getSpell(), getShooter(), world, entity, true);
 						SpellUtils.applyStackStage(getSpell(), getShooter(), (EntityLivingBase) entity, entity.posX, entity.posY, entity.posZ, null, world, false, true, 0);
 						break;

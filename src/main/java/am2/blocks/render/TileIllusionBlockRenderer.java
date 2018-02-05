@@ -7,10 +7,10 @@ import am2.defs.BlockDefs;
 import am2.defs.PotionEffectsDefs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -48,7 +48,7 @@ public class TileIllusionBlockRenderer extends TileEntitySpecialRenderer<TileEnt
 		} else {
 			IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(BlockDefs.illusionBlock.getDefaultState());
 			Tessellator t = Tessellator.getInstance();
-			VertexBuffer wr = t.getBuffer();
+			BufferBuilder wr = t.getBuffer();
 			wr.begin(7, DefaultVertexFormats.BLOCK);
 			World world = te.getWorld();
 			IBlockState state = world.getBlockState(te.getPos());

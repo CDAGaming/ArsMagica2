@@ -10,7 +10,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 /**
  * Affinity :<BR>
@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
  *
  */
 @SuppressWarnings("deprecation")
-public class Affinity extends IForgeRegistryEntry.Impl<Affinity> implements Comparable<Affinity>{
+public class Affinity extends IForgeRegistryEntry.Impl<Affinity> implements Comparable<Affinity>, IForgeRegistryEntry<Affinity> {
 	
 	private static final ResourceLocation NONE_LOC = new ResourceLocation("arsmagica2", "none");
 	private static final ResourceLocation ARCANE_LOC = new ResourceLocation("arsmagica2", "arcane");

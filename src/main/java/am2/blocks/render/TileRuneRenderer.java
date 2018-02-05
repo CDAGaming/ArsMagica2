@@ -4,10 +4,10 @@ import am2.api.affinity.Affinity;
 import am2.blocks.tileentity.TileEntityGroundRuneSpell;
 import am2.utils.AffinityShiftUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -31,7 +31,7 @@ public class TileRuneRenderer extends TileEntitySpecialRenderer<TileEntityGround
 	        int j = i >> 16 & 65535;
 	        int k = i & 65535;
 	        float height = 0.03125F;
-			VertexBuffer wr = tesselator.getBuffer();
+			BufferBuilder wr = tesselator.getBuffer();
 			wr.begin(7, DefaultVertexFormats.POSITION_TEX_LMAP_COLOR);
 			
 			float minU = sprite.getMinU();

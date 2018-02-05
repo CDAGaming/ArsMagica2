@@ -11,7 +11,7 @@ import am2.spell.SpellCastResult;
 import am2.utils.SpellUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,8 +25,8 @@ public class Touch extends SpellShape{
 	public SpellCastResult beginStackStage(ItemSpellBase item, ItemStack stack, EntityLivingBase caster, EntityLivingBase target, World world, double x, double y, double z, EnumFacing side, boolean giveXP, int useCount){
 		if (target != null){
 			Entity e = target;
-			if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-				e = (EntityLivingBase)((EntityDragonPart)e).parent;
+			if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+				e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 
 			SpellCastResult result = SpellUtils.applyStageToEntity(stack, caster, world, e, giveXP);
 			return result;
@@ -39,8 +39,8 @@ public class Touch extends SpellShape{
 		}else{
 			if (mop.typeOfHit == RayTraceResult.Type.ENTITY){
 				Entity e = mop.entityHit;
-				if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-					e = (EntityLivingBase)((EntityDragonPart)e).parent;
+				if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+					e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 				SpellCastResult result = SpellUtils.applyStageToEntity(stack, caster, world, (target == null) ? e : target, giveXP);
 				if (result != SpellCastResult.SUCCESS){
 					return result;

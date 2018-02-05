@@ -23,7 +23,7 @@ import am2.utils.SpellUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -57,8 +57,8 @@ public class Beam extends SpellShape{
 		}else if (mop.typeOfHit == RayTraceResult.Type.ENTITY){
 			if (shouldApplyEffectEntity && !world.isRemote){
 				Entity e = mop.entityHit;
-				if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-					e = (EntityLivingBase)((EntityDragonPart)e).parent;
+				if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+					e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 				result = SpellUtils.applyStageToEntity(stack, caster, world, e, giveXP);
 				if (result != SpellCastResult.SUCCESS){
 					return result;

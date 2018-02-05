@@ -3,10 +3,10 @@ package am2.api.spell;
 import java.util.EnumSet;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 
-public abstract class AbstractSpellPart extends IForgeRegistryEntry.Impl<AbstractSpellPart> {
+public abstract class AbstractSpellPart extends IForgeRegistryEntry.Impl<AbstractSpellPart> implements IForgeRegistryEntry<AbstractSpellPart> {
 	
 	/**
 	 * Supports :

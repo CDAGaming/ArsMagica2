@@ -1,5 +1,6 @@
 package am2.blocks.render;
 
+import net.minecraft.client.renderer.BufferBuilder;
 import org.lwjgl.opengl.GL11;
 
 import com.google.common.base.Function;
@@ -14,7 +15,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
 import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.block.model.IBakedModel;
@@ -131,7 +131,7 @@ public class TileArcaneReconstructorRenderer extends TileEntitySpecialRenderer<T
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(-te.getPos().getX(), -te.getPos().getY(), -te.getPos().getZ());
 			Tessellator t = Tessellator.getInstance();
-			VertexBuffer wr = t.getBuffer();
+			BufferBuilder wr = t.getBuffer();
 			wr.begin(7, DefaultVertexFormats.BLOCK);
 			World world = te.getWorld();
 			if (world == null)

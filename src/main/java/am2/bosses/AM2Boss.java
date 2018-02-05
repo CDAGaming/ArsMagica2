@@ -12,7 +12,7 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -28,7 +28,7 @@ public abstract class AM2Boss extends EntityMob implements IEntityMultiPart, IAr
 
 	protected BossActions currentAction = BossActions.IDLE;
 	protected int ticksInCurrentAction;
-	protected EntityDragonPart[] parts;
+	protected MultiPartEntityPart[] parts;
 
 	public boolean playerCanSee = false;
     private BossInfoServer bossInfo = null;
@@ -47,7 +47,7 @@ public abstract class AM2Boss extends EntityMob implements IEntityMultiPart, IAr
 	@Override
 	public void setSize(float width, float height){
 		if (parts == null){
-			parts = new EntityDragonPart[]{new EntityDragonPart(this, "defaultBody", width, height){
+			parts = new MultiPartEntityPart[]{new MultiPartEntityPart(this, "defaultBody", width, height){
 				@Override
 				public void onUpdate(){
 					super.onUpdate();
@@ -196,7 +196,7 @@ public abstract class AM2Boss extends EntityMob implements IEntityMultiPart, IAr
 
 	protected abstract float modifyDamageAmount(DamageSource source, float damageAmt);
 
-	public boolean attackEntityFromPart(EntityDragonPart part, DamageSource source, float damage){
+	public boolean attackEntityFromPart(MultiPartEntityPart part, DamageSource source, float damage){
 		return this.attackEntityFrom(source, damage);
 	}
 

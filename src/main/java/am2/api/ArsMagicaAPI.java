@@ -14,7 +14,9 @@ import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
-import net.minecraftforge.fml.common.registry.*;
+import net.minecraftforge.registries.*;
+
+import javax.annotation.Nullable;
 
 public class ArsMagicaAPI {
 	
@@ -94,17 +96,17 @@ public class ArsMagicaAPI {
 		static final ObjectCallbacks<AbstractFlickerFunctionality> FLICKER_FOCUS = new ObjectCallbacks<>();
 
 		@Override
-		public void onCreate(Map<ResourceLocation, ?> slaveset, BiMap<ResourceLocation, ? extends IForgeRegistry<?>> registries) {
+		public void onAdd(IForgeRegistryInternal<T> owner, RegistryManager stage, int id, T obj, @Nullable T oldObj) {
 
 		}
 
 		@Override
-		public void onClear(IForgeRegistry<T> is, Map<ResourceLocation, ?> slaveset) {
+		public void onClear(IForgeRegistryInternal<T> owner, RegistryManager stage) {
 
 		}
 
 		@Override
-		public void onAdd(T obj, int id, Map<ResourceLocation, ?> slaveset) {
+		public void onCreate(IForgeRegistryInternal<T> owner, RegistryManager stage) {
 
 		}
 	}

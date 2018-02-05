@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.vecmath.Matrix4f;
 
+import net.minecraftforge.client.model.PerspectiveMapWrapper;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.google.common.base.Function;
@@ -31,14 +32,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ICustomModelLoader;
 import net.minecraftforge.client.model.IModel;
-import net.minecraftforge.client.model.IPerspectiveAwareModel;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.model.IModelState;
 import net.minecraftforge.common.model.TRSRTransformation;
 
 public class SpecialRenderModelLoader implements ICustomModelLoader{
 	
-	public class Baked implements IPerspectiveAwareModel {
+	public class Baked implements IBakedModel {
 		
 		private ItemStack stack = ItemStack.EMPTY;
 		private EntityLivingBase entity = null;
@@ -81,7 +81,7 @@ public class SpecialRenderModelLoader implements ICustomModelLoader{
 		@Override
 		public Pair<? extends IBakedModel, Matrix4f> handlePerspective(TransformType cameraTransformType) {
 			MinecraftForge.EVENT_BUS.post(new RenderingItemEvent(stack, cameraTransformType, entity));
-			return IPerspectiveAwareModel.MapWrapper.handlePerspective(this, transforms, cameraTransformType);
+			return PerspectiveMapWrapper.handlePerspective(this, transforms, cameraTransformType);
 		}
 
 	}
@@ -116,7 +116,7 @@ public class SpecialRenderModelLoader implements ICustomModelLoader{
 		}
 
 		@Override
-		public IBakedModel bake(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
+		public IBakedModel bake(IModelState state, VertexFormat format, java.util.function.Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
 			return new SpecialRenderModelLoader.Baked();
 		}
 
@@ -126,7 +126,7 @@ public class SpecialRenderModelLoader implements ICustomModelLoader{
 		}
 	}
 
-	static ImmutableMap<TransformType, TRSRTransformation> transforms = IPerspectiveAwareModel.MapWrapper.getTransforms(ModelUtils.DEFAULT_ITEM_STATE);
+	static ImmutableMap<TransformType, TRSRTransformation> transforms = PerspectiveMapWrapper.getTransforms(ModelUtils.DEFAULT_ITEM_STATE);
 
 	@Override
 	public void onResourceManagerReload(IResourceManager resourceManager) {

@@ -4,10 +4,10 @@ import am2.api.ArsMagicaAPI;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 @SuppressWarnings("deprecation")
-public class Skill extends IForgeRegistryEntry.Impl<Skill>{
+public class Skill extends IForgeRegistryEntry.Impl<Skill> implements IForgeRegistryEntry<Skill> {
 	
 	private int posX, posY;
 	private SkillTree tree;

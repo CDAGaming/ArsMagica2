@@ -18,7 +18,7 @@ import am2.utils.AffinityShiftUtils;
 import am2.utils.SpellUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -44,8 +44,8 @@ public class Chain extends SpellShape{
 
 		if (mop != null && mop.typeOfHit == RayTraceResult.Type.ENTITY && mop.entityHit != null){
 			Entity e = mop.entityHit;
-			if (e instanceof EntityDragonPart && ((EntityDragonPart)e).parent instanceof EntityLivingBase)
-				e = (EntityLivingBase)((EntityDragonPart)e).parent;
+			if (e instanceof MultiPartEntityPart && ((MultiPartEntityPart)e).parent instanceof EntityLivingBase)
+				e = (EntityLivingBase)((MultiPartEntityPart)e).parent;
 			if (e instanceof EntityLivingBase){
 				do{
 					targets.add((EntityLivingBase)e);
