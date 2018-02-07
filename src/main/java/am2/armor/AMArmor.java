@@ -14,6 +14,8 @@ import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.List;
+
 public class AMArmor extends ItemArmor implements ISpecialArmor{
 
 	private static final int maxDamageArray[] = {
@@ -125,4 +127,5 @@ public class AMArmor extends ItemArmor implements ISpecialArmor{
 		return super.hasEffect(stack);
 
 	}
+
 }

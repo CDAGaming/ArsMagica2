@@ -49,7 +49,6 @@ public class ItemWaterGuardianOrbs extends AMArmor{
 		return 0;
 	}
 
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List<String> par3List, boolean par4){
 		par3List.add(I18n.translateToLocal("am2.tooltip.water_orbs"));

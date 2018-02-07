@@ -53,12 +53,12 @@ public class ArsMagicaAPI {
 	public static final IAttribute burnoutReductionRate = new RangedAttribute(null, "am2.burnoutReduction", 1.0f, 0.1f, 2.0f).setDescription("Burnout Reduction Rate").setShouldWatch(true);
 
 	
-	public static FMLControlledNamespacedRegistry<Affinity> getAffinityRegistry() {return (FMLControlledNamespacedRegistry<Affinity>)AFFINITY_REGISTRY;}
-	public static FMLControlledNamespacedRegistry<AbstractAffinityAbility> getAffinityAbilityRegistry() {return (FMLControlledNamespacedRegistry<AbstractAffinityAbility>)ABILITY_REGISTRY;}
-	public static FMLControlledNamespacedRegistry<ArmorImbuement> getArmorImbuementRegistry() {return (FMLControlledNamespacedRegistry<ArmorImbuement>)IMBUEMENTS_REGISTRY;}
-	public static FMLControlledNamespacedRegistry<AbstractSpellPart> getSpellRegistry() {return (FMLControlledNamespacedRegistry<AbstractSpellPart>)SPELL_REGISTRY;}
-	public static FMLControlledNamespacedRegistry<Skill> getSkillRegistry() {return (FMLControlledNamespacedRegistry<Skill>)SKILL_REGISTRY;}
-	public static FMLControlledNamespacedRegistry<AbstractFlickerFunctionality> getFlickerFocusRegistry() {return (FMLControlledNamespacedRegistry<AbstractFlickerFunctionality>)FLICKER_FOCUS_REGISTRY;}
+	public static ForgeRegistry<Affinity> getAffinityRegistry() {return (ForgeRegistry<Affinity>)AFFINITY_REGISTRY;}
+	public static ForgeRegistry<AbstractAffinityAbility> getAffinityAbilityRegistry() {return (ForgeRegistry<AbstractAffinityAbility>)ABILITY_REGISTRY;}
+	public static ForgeRegistry<ArmorImbuement> getArmorImbuementRegistry() {return (ForgeRegistry<ArmorImbuement>)IMBUEMENTS_REGISTRY;}
+	public static ForgeRegistry<AbstractSpellPart> getSpellRegistry() {return (ForgeRegistry<AbstractSpellPart>)SPELL_REGISTRY;}
+	public static ForgeRegistry<Skill> getSkillRegistry() {return (ForgeRegistry<Skill>)SKILL_REGISTRY;}
+	public static ForgeRegistry<AbstractFlickerFunctionality> getFlickerFocusRegistry() {return (ForgeRegistry<AbstractFlickerFunctionality>)FLICKER_FOCUS_REGISTRY;}
 	
 	/**
 	 * Enable Tier 4, call in static{} for change to take effect.
@@ -113,10 +113,6 @@ public class ArsMagicaAPI {
     
     public static class SpellCallbacks extends ObjectCallbacks<AbstractSpellPart> {
 
-		@Override
-		public void onAdd(AbstractSpellPart ability, int id, Map<ResourceLocation, ?> slaves) {
-		}
-		
 	}
 
 }
